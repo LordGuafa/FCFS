@@ -17,8 +17,8 @@ class ProcesoTableView(tk.Frame):
         self.master: Optional[tk.Misc] = master # type: ignore
         self.procesos: List[Proceso] = procesos if procesos is not None else []
         self.on_edit: Optional[Callable[[int, str, Any], None]] = on_edit
-        self.on_add = on_add
-        self.on_run_fcfs = on_run_fcfs
+        self.on_add: Callable[[], None] | None = on_add
+        self.on_run_fcfs: Callable[[], None] | None = on_run_fcfs
         self.pack(fill="both", expand=True)
         self.create_widgets()
 
@@ -31,8 +31,8 @@ class ProcesoTableView(tk.Frame):
         columns = ("nombre", "TA", "R", "TI", "TF", "TR", "TE")
         style = ttk.Style()
         style.theme_use('clam')
-        style.configure("Treeview", background="#232946", fieldbackground="#232946", foreground="#eebbc3", rowheight=28, font=("Arial", 11))
-        style.configure("Treeview.Heading", background="#121629", foreground="#eebbc3", font=("Arial", 11, "bold"))
+        style.configure("Treeview", background="#232946", fieldbackground="#232946", foreground="#eebbc3", rowheight=28, font=("Arial", 11))#type: ignore
+        style.configure("Treeview.Heading", background="#121629", foreground="#eebbc3", font=("Arial", 11, "bold"))#type: ignore
         self.tree = ttk.Treeview(self, columns=columns, show="headings")
         for col in columns:
             self.tree.heading(col, text=col)
@@ -93,7 +93,7 @@ class ProcesoTableView(tk.Frame):
             value = self.tree.set(item, column)
             entry = tk.Entry(self.tree)
             entry.place(x=x, y=y, width=width, height=height)
-            entry.insert(0, value)
+            entry.insert(index=0, string=value)
             entry.focus()
             def save_edit(e: Any) -> None:
                 new_value = entry.get()

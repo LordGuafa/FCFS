@@ -23,13 +23,13 @@ class Controller:
         )
 
     def add_proceso(self) -> None:
-        nuevo_nombre = f"P{len(self.procesos)+1}"
+        nuevo_nombre: str = f"P{len(self.procesos)+1}"
         nuevo = Proceso(nuevo_nombre, 0, 1)
         self.procesos.append(nuevo)
         self.update_procesos(self.procesos)
 
     def on_edit(self, idx: int, field: str, value: Any) -> None:
-        proceso = self.procesos[idx]
+        proceso: Proceso = self.procesos[idx]
         if field == "nombre":
             proceso.nombre = value
         elif field == "TA":
@@ -53,7 +53,7 @@ class Controller:
         resultado: List[Proceso] = self.fcfs.run()
         self.update_procesos(resultado)
         # Animar el Gantt
-        self.view.gantt.animar(self.procesos, callback=None, velocidad=0.2)
+        self.view.gantt.animar(self.procesos, callback=None, velocidad=0.2)#type: ignore
 
     def update_procesos(self, resultado: List[Proceso]) -> None:
         for i, p in enumerate(resultado):
