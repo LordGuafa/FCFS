@@ -33,17 +33,17 @@ class Controller:
         if field == "nombre":
             proceso.nombre = value
         elif field == "TA":
-            proceso.TA = float(value)
+            proceso.TA = int(value)
         elif field == "R":
-            proceso.R = float(value)
+            proceso.R = int(value)
         elif field == "TI":
-            proceso.TI = float(value)
+            proceso.TI = int(value)
         elif field == "TF":
-            proceso.TF = float(value)
+            proceso.TF = int(value)
         elif field == "TR":
-            proceso.TR = float(value)
+            proceso.TR = int(value)
         elif field == "TE":
-            proceso.TE = float(value)
+            proceso.TE = int(value)
         self.update_procesos(self.procesos)
 
     def ejecutar_fcfs(self) -> None:

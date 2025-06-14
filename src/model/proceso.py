@@ -1,23 +1,23 @@
 class Proceso:
-    def __init__(self, nombre: str, TA: float, R: float,)-> None:
+    def __init__(self, nombre: str, TA: int, R: int,)-> None:
         """_summary_
 
         Args:
             nombre (str): nombre del proceso
-            TA (float): Tiempo de llegada
-            R (float): Tiempo de duración (ráfaga)
-            TI (float): Tiempo de inicio
-            TF (float): Tiempo de finalización
-            TR (float): Tiempo de retorno
-            TE (float): Tiempo de espera
+            TA (int): Tiempo de llegada
+            R (int): Tiempo de duración (ráfaga)
+            TI (int): Tiempo de inicio
+            TF (int): Tiempo de finalización
+            TR (int): Tiempo de retorno
+            TE (int): Tiempo de espera
         """
         self.nombre = nombre
-        self.TA: float = TA # Tiempo de llegada
-        self.R: float = R #
-        self.TI: float = 0
-        self.TF: float = 0
-        self.TR: float = 0
-        self.TE : float= 0
+        self.TA: int = TA # Tiempo de llegada
+        self.R: int = R #
+        self.TI: int = 0
+        self.TF: int = 0
+        self.TR: int = 0
+        self.TE : int= 0
 
 
 

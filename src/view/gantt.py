@@ -20,7 +20,7 @@ class GanttChart(tk.Frame):
         self.animando = False
         self.draw_gantt(procesos)
 
-    def draw_gantt(self, procesos: List[Proceso], progreso: Optional[Dict[str, float]] = None):
+    def draw_gantt(self, procesos: List[Proceso], progreso: Optional[Dict[str, int]] = None):
         self.canvas.delete("all")
         if not procesos:
             return
