@@ -1,7 +1,6 @@
 from view.vista import ProcesoTableView
 from model.proceso import Proceso
 from model.fcfs import FCFS
-from view.gantt import GanttChart
 import tkinter as tk
 from typing import List, Any
 
@@ -53,7 +52,8 @@ class Controller:
             self.fcfs.add_proceso(p)
         resultado: List[Proceso] = self.fcfs.run()
         self.update_procesos(resultado)
-        GanttChart(self.root, resultado)
+        # Animar el Gantt
+        self.view.gantt.animar(self.procesos, callback=None, velocidad=0.2)
 
     def update_procesos(self, resultado: List[Proceso]) -> None:
         for i, p in enumerate(resultado):
