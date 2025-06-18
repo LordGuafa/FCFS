@@ -8,8 +8,3 @@ if project_root not in sys.path:
     sys.path.insert(0, project_root)
 
 # Importar el controlador desde la estructura MVC
-from controller.controller import Controller
-
-if __name__ == "__main__":
-    app = Controller()
-    app.run()

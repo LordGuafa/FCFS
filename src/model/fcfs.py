@@ -23,3 +23,12 @@ class FCFS:
             retorno.append(proceso)
 
         return retorno
+
+    def recalcular_tiempos(self, procesos: list[Proceso]) -> None:
+        tiempo_actual = 0
+        for proceso in procesos:
+            proceso.TI = max(tiempo_actual, proceso.TA)
+            proceso.TF = proceso.TI + proceso.R
+            proceso.TR = proceso.TF - proceso.TA
+            proceso.TE = proceso.TR - proceso.R
+            tiempo_actual = proceso.TF

@@ -26,7 +26,12 @@ class Controller:
         nuevo_nombre: str = f"P{len(self.procesos)+1}"
         nuevo = Proceso(nuevo_nombre, 0, 1)
         self.procesos.append(nuevo)
+        # Recalcula los tiempos para todos los procesos
+        self.fcfs.recalcular_tiempos(self.procesos)
         self.update_procesos(self.procesos)
+        # Si la animación está en curso, redibuja el Gantt para mostrar el nuevo proceso
+        if getattr(self.view.gantt, "animando", False):
+            self.view.gantt.draw_gantt(self.procesos)
 
     def on_edit(self, idx: int, field: str, value: Any) -> None:
         proceso: Proceso = self.procesos[idx]
