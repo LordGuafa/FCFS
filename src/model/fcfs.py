@@ -3,7 +3,7 @@ from model.proceso import Proceso
 
 class FCFS:
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.lista_procesos: deque[Proceso] = deque()
 
 
