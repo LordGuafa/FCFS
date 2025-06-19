@@ -1,23 +1,22 @@
 class Proceso:
-    def __init__(self, nombre: str, TA: int, R: int,)-> None:
+    def __init__(self, nombre: str, tiempo_llegada: int, rafaga: int,algoritmo:str, prioridad: int | None = None) -> None:
         """_summary_
 
         Args:
             nombre (str): nombre del proceso
-            TA (int): Tiempo de llegada
-            R (int): Tiempo de duración (ráfaga)
-            TI (int): Tiempo de inicio
-            TF (int): Tiempo de finalización
-            TR (int): Tiempo de retorno
-            TE (int): Tiempo de espera
+            tiempo_llegada (int): Tiempo de llegada
+            rafaga (int): Tiempo de duración (ráfaga)
+            prioridad (int, opcional): Prioridad del proceso (menor valor = mayor prioridad)
         """
-        self.nombre = nombre
-        self.TA: int = TA # Tiempo de llegada
-        self.R: int = R #
-        self.TI: int = 0
-        self.TF: int = 0
-        self.TR: int = 0
-        self.TE : int= 0
+        self.nombre: str = nombre
+        self.tiempo_llegada: int = tiempo_llegada # Tiempo de llegada
+        self.rafaga: int = rafaga #
+        self.tiempo_inicio: int = 0
+        self.tiempo_final: int = 0
+        self.tiempo_retorno: int = 0
+        self.tiempo_espera : int= 0
+        self.prioridad: int | None = prioridad  # Puede ser None si no aplica
+        self.algoritmo: str = algoritmo
 
 
 
