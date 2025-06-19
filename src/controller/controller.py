@@ -1,6 +1,7 @@
 from view.vista import ProcesoTableView
 from model.proceso import Proceso
 from model.fcfs import FCFS
+from model.prioridades import Prioridades
 from model.planificador import Planificador
 import tkinter as tk
 from typing import List, Any
@@ -11,9 +12,14 @@ class Controller:
         self.root = tk.Tk()
         self.root.title("Planificador de Procesos")
         self.procesos: List[Proceso] = [
-            Proceso("P1", 0, 5,"FCFS"),
-            Proceso("P2", 2, 3,"FCFS"),
-            Proceso("P3", 4, 1,"FCFS")
+            # Proceso("P1", 0, 5,"FCFS"),
+            # Proceso("P2", 2, 3,"FCFS"),
+            # Proceso("P3", 4, 1,"FCFS")
+            Proceso("P1", 0, 5,"Prioridades", 1),
+            Proceso("P2", 2, 3,"Prioridades",4),
+            Proceso("P3", 4, 1,"Prioridades",3),
+            Proceso("P4", 4, 1,"Prioridades",2)
+
         ]
         self.view = ProcesoTableView(
             master=self.root,
@@ -27,7 +33,8 @@ class Controller:
 
     def add_proceso(self) -> None:
         nuevo_nombre: str = f"P{len(self.procesos)+1}"
-        nuevo = Proceso(nuevo_nombre, 0, 1, "FCFS")
+        # nuevo = Proceso(nuevo_nombre, 0, 1, "FCFS")#Aqui se cambia para el test
+        nuevo = Proceso(nuevo_nombre, 0, 1,"Prioridades",2)
         self.procesos.append(nuevo)
         self.view.refresh(self.procesos)
         # No recalcular tiempos aquí, solo al ejecutar el planificador
@@ -66,7 +73,6 @@ class Controller:
 
         # Ejecutar Prioridades solo en pendientes
         if procesos_prioridad:
-            from model.prioridades import Prioridades
             planificador_prio = Prioridades()
             for p in procesos_prioridad:
                 planificador_prio.add_proceso(p)
