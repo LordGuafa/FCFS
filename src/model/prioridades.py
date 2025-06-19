@@ -4,11 +4,18 @@ from model.proceso import Proceso
 
 class Prioridades(Planificador):
     def run(self) -> List[Proceso]:
-        # Solo considerar procesos con prioridad válida
-        procesos = [p for p in self.lista_procesos if p.prioridad is not None]
-        procesos.sort(key=lambda p: (p.tiempo_llegada, p.prioridad))
-        tiempo_actual = 0
+        # Solo considerar procesos con prioridad válida y que no han terminado
+        procesos = [p for p in self.lista_procesos if p.prioridad is not None and p.tiempo_final == 0]
+        # Obtener el tiempo final más alto de los procesos ya ejecutados
+        procesos_ya_ejecutados = [p for p in self.lista_procesos if p.tiempo_final > 0]
+        if procesos_ya_ejecutados:
+            tiempo_actual = max(p.tiempo_final for p in procesos_ya_ejecutados)
+        else:
+            tiempo_actual = 0
         retorno = []
+
+        # Ordenar por llegada y prioridad
+        procesos.sort(key=lambda p: (p.tiempo_llegada, p.prioridad))
 
         while procesos:
             disponibles: List[Proceso] = [p for p in procesos if p.tiempo_llegada <= tiempo_actual]

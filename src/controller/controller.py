@@ -55,11 +55,8 @@ class Controller:
         # No recalcular tiempos aquí, solo al ejecutar el planificador
 
     def ejecutar_planificador(self) -> None:
-        # Separar procesos pendientes por algoritmo
-        procesos_fcfs: List[Proceso] = [p for p in self.procesos if p.algoritmo == "FCFS" and p.tiempo_final == 0]
-        procesos_prioridad: List[Proceso] = [p for p in self.procesos if p.algoritmo == "Prioridades" and p.tiempo_final == 0]
-
         # Ejecutar FCFS solo en pendientes
+        procesos_fcfs: List[Proceso] = [p for p in self.procesos if p.algoritmo == "FCFS" and p.tiempo_final == 0]
         if procesos_fcfs:
             planificador_fcfs = FCFS()
             for p in procesos_fcfs:
@@ -71,10 +68,16 @@ class Controller:
                 p.tiempo_retorno = resultado_fcfs[i].tiempo_retorno
                 p.tiempo_espera = resultado_fcfs[i].tiempo_espera
 
-        # Ejecutar Prioridades solo en pendientes
+        # Ejecutar Prioridades en TODOS los procesos con algoritmo "Prioridades"
+        procesos_prioridad: List[Proceso] = [p for p in self.procesos if p.algoritmo == "Prioridades"]
         if procesos_prioridad:
             planificador_prio = Prioridades()
             for p in procesos_prioridad:
+                # Resetear tiempos antes de recalcular
+                p.tiempo_inicio = 0
+                p.tiempo_final = 0
+                p.tiempo_retorno = 0
+                p.tiempo_espera = 0
                 planificador_prio.add_proceso(p)
             resultado_prio: List[Proceso] = planificador_prio.run()
             # Actualizar los procesos originales por nombre
