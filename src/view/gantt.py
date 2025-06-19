@@ -24,8 +24,8 @@ class GanttChart(tk.Frame):
         self.canvas.delete("all")
         if not procesos:
             return
-        min_ti = min(p.TI for p in procesos)
-        max_tf = max(p.TF for p in procesos)
+        min_ti = min(p.tiempo_inicio for p in procesos)
+        max_tf = max(p.tiempo_final for p in procesos)
         total_time = max_tf - min_ti
         x0 = 60
         y0 = 40
@@ -39,22 +39,22 @@ class GanttChart(tk.Frame):
             barra_fin = progreso[p.nombre] if progreso and p.nombre in progreso else None
 
             # Solo dibuja la barra si el proceso ya ha comenzado a ejecutarse
-            if barra_fin is not None and barra_fin > p.TI:
+            if barra_fin is not None and barra_fin > p.tiempo_inicio:
                 # Fondo de la barra (gris)
                 self.canvas.create_rectangle(
-                    x0 + scale * (p.TI - min_ti), y,
-                    x0 + scale * (p.TF - min_ti), y + height,
+                    x0 + scale * (p.tiempo_inicio - min_ti), y,
+                    x0 + scale * (p.tiempo_final - min_ti), y + height,
                     fill="#e0e0e0", outline="#b0b0b0"
                 )
                 # Barra de progreso (azul)
                 self.canvas.create_rectangle(
-                    x0 + scale * (p.TI - min_ti), y,
-                    x0 + scale * (min(barra_fin, p.TF) - min_ti), y + height,
+                    x0 + scale * (p.tiempo_inicio - min_ti), y,
+                    x0 + scale * (min(barra_fin, p.tiempo_final) - min_ti), y + height,
                     fill="#87CEEB", outline="#393e6a", width=2
                 )
                 # Tiempos solo si el proceso ya inició
-                self.canvas.create_text(x0 - 10, y + height + 5, text=str(int(p.TI)), anchor="n", font=("Arial", 9))
-                self.canvas.create_text(x0 + scale * (p.TF - min_ti), y + height + 5, text=str(int(p.TF)), anchor="n", font=("Arial", 9))
+                self.canvas.create_text(x0 - 10, y + height + 5, text=str(int(p.tiempo_inicio)), anchor="n", font=("Arial", 9))
+                self.canvas.create_text(x0 + scale * (p.tiempo_final - min_ti), y + height + 5, text=str(int(p.tiempo_final)), anchor="n", font=("Arial", 9))
             # Nombre (siempre)
             self.canvas.create_text(x0 - 40, y + height / 2, text=p.nombre, font=("Arial", 11, "bold"), anchor="w")
         # Eje de tiempo
@@ -68,22 +68,22 @@ class GanttChart(tk.Frame):
         self._procesos_animados = set()
         progreso: Dict[str, int] = {}
         def avanzar():
-            # Obtiene la lista actualizada de procesos ordenados por TI
-            procesos_ordenados = sorted(procesos, key=lambda p: p.TI)
+            # Obtiene la lista actualizada de procesos ordenados por tiempo_inicio
+            procesos_ordenados = sorted(procesos, key=lambda p: p.tiempo_inicio)
             for p in procesos_ordenados:
                 if p.nombre in self._procesos_animados:
                     continue
                 # Espera hasta que sea el turno de este proceso
-                tiempo = p.TI
+                tiempo = p.tiempo_inicio
                 def paso():
                     nonlocal tiempo
-                    if tiempo < p.TF:
+                    if tiempo < p.tiempo_final:
                         tiempo += 1
                         progreso[p.nombre] = tiempo
                         self.draw_gantt(procesos, progreso)
                         self.after(int(velocidad * 1000), paso)
                     else:
-                        progreso[p.nombre] = p.TF
+                        progreso[p.nombre] = p.tiempo_final
                         self.draw_gantt(procesos, progreso)
                         self._procesos_animados.add(p.nombre)
                         self.after(300, avanzar)
