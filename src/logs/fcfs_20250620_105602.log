@@ -1,0 +1,42 @@
+2025-06-20 10:56:02,742 - INFO - Iniciando aplicación FCFS
+2025-06-20 10:56:03,291 - INFO - Controlador iniciado correctamente
+2025-06-20 10:56:07,137 - INFO - Procesos FCFS calculados:
+2025-06-20 10:56:07,138 - INFO - P1 | Llegada: 0 | Rafaga: 5 | Inicio: 0 | Final: 5 | Retorno: 5 | Espera: 0
+2025-06-20 10:56:07,138 - INFO - P2 | Llegada: 2 | Rafaga: 3 | Inicio: 5 | Final: 8 | Retorno: 6 | Espera: 3
+2025-06-20 10:56:07,138 - INFO - P3 | Llegada: 4 | Rafaga: 1 | Inicio: 8 | Final: 9 | Retorno: 5 | Espera: 4
+2025-06-20 10:56:07,954 - INFO - Procesos FCFS calculados:
+2025-06-20 10:56:07,955 - INFO - P1 | Llegada: 0 | Rafaga: 5 | Inicio: 1 | Final: 6 | Retorno: 6 | Espera: 1
+2025-06-20 10:56:07,955 - INFO - P2 | Llegada: 2 | Rafaga: 3 | Inicio: 6 | Final: 9 | Retorno: 7 | Espera: 4
+2025-06-20 10:56:07,955 - INFO - P3 | Llegada: 4 | Rafaga: 1 | Inicio: 9 | Final: 10 | Retorno: 6 | Espera: 5
+2025-06-20 10:56:07,955 - INFO - P4 | Llegada: 1 | Rafaga: 1 | Inicio: 10 | Final: 11 | Retorno: 10 | Espera: 9
+2025-06-20 10:56:08,286 - INFO - Procesos FCFS calculados:
+2025-06-20 10:56:08,287 - INFO - P1 | Llegada: 0 | Rafaga: 5 | Inicio: 2 | Final: 7 | Retorno: 7 | Espera: 2
+2025-06-20 10:56:08,287 - INFO - P2 | Llegada: 2 | Rafaga: 3 | Inicio: 7 | Final: 10 | Retorno: 8 | Espera: 5
+2025-06-20 10:56:08,287 - INFO - P3 | Llegada: 4 | Rafaga: 1 | Inicio: 10 | Final: 11 | Retorno: 7 | Espera: 6
+2025-06-20 10:56:08,287 - INFO - P4 | Llegada: 1 | Rafaga: 1 | Inicio: 11 | Final: 12 | Retorno: 11 | Espera: 10
+2025-06-20 10:56:08,287 - INFO - P5 | Llegada: 2 | Rafaga: 1 | Inicio: 12 | Final: 13 | Retorno: 11 | Espera: 10
+2025-06-20 10:56:08,622 - INFO - Procesos FCFS calculados:
+2025-06-20 10:56:08,622 - INFO - P1 | Llegada: 0 | Rafaga: 5 | Inicio: 2 | Final: 7 | Retorno: 7 | Espera: 2
+2025-06-20 10:56:08,622 - INFO - P2 | Llegada: 2 | Rafaga: 3 | Inicio: 7 | Final: 10 | Retorno: 8 | Espera: 5
+2025-06-20 10:56:08,622 - INFO - P3 | Llegada: 4 | Rafaga: 1 | Inicio: 10 | Final: 11 | Retorno: 7 | Espera: 6
+2025-06-20 10:56:08,622 - INFO - P4 | Llegada: 1 | Rafaga: 1 | Inicio: 11 | Final: 12 | Retorno: 11 | Espera: 10
+2025-06-20 10:56:08,622 - INFO - P5 | Llegada: 2 | Rafaga: 1 | Inicio: 12 | Final: 13 | Retorno: 11 | Espera: 10
+2025-06-20 10:56:08,623 - INFO - P6 | Llegada: 2 | Rafaga: 1 | Inicio: 13 | Final: 14 | Retorno: 12 | Espera: 11
+2025-06-20 10:57:24,136 - INFO - Procesos Prioridades calculados:
+2025-06-20 10:57:24,137 - INFO - P1 | Llegada: 0 | Rafaga: 5 | Prioridad: 3 | Inicio: 0 | Final: 5 | Retorno: 5 | Espera: 0
+2025-06-20 10:57:24,137 - INFO - P4 | Llegada: 1 | Rafaga: 1 | Prioridad: 1 | Inicio: 5 | Final: 6 | Retorno: 5 | Espera: 4
+2025-06-20 10:57:24,137 - INFO - P2 | Llegada: 2 | Rafaga: 3 | Prioridad: 1 | Inicio: 6 | Final: 9 | Retorno: 7 | Espera: 4
+2025-06-20 10:57:24,137 - INFO - P5 | Llegada: 2 | Rafaga: 1 | Prioridad: 1 | Inicio: 9 | Final: 10 | Retorno: 8 | Espera: 7
+2025-06-20 10:57:24,137 - INFO - P6 | Llegada: 2 | Rafaga: 1 | Prioridad: 1 | Inicio: 10 | Final: 11 | Retorno: 9 | Espera: 8
+2025-06-20 10:57:24,137 - INFO - P3 | Llegada: 4 | Rafaga: 1 | Prioridad: 2 | Inicio: 11 | Final: 12 | Retorno: 8 | Espera: 7
+2025-06-20 10:59:04,245 - INFO - Procesos Prioridades calculados:
+2025-06-20 10:59:04,246 - INFO - P1 | Llegada: 0 | Rafaga: 5 | Prioridad: 3 | Inicio: 0 | Final: 5 | Retorno: 5 | Espera: 0
+2025-06-20 10:59:04,246 - INFO - P2 | Llegada: 1 | Rafaga: 3 | Prioridad: 1 | Inicio: 5 | Final: 8 | Retorno: 7 | Espera: 4
+2025-06-20 10:59:04,246 - INFO - P4 | Llegada: 3 | Rafaga: 6 | Prioridad: 2 | Inicio: 8 | Final: 14 | Retorno: 11 | Espera: 5
+2025-06-20 10:59:04,246 - INFO - P3 | Llegada: 2 | Rafaga: 8 | Prioridad: 4 | Inicio: 14 | Final: 22 | Retorno: 20 | Espera: 12
+2025-06-20 10:59:46,089 - INFO - Procesos Prioridades calculados:
+2025-06-20 10:59:46,090 - INFO - P1 | Llegada: 0 | Rafaga: 5 | Prioridad: 3 | Inicio: 0 | Final: 5 | Retorno: 5 | Espera: 0
+2025-06-20 10:59:46,090 - INFO - P2 | Llegada: 1 | Rafaga: 3 | Prioridad: 1 | Inicio: 5 | Final: 8 | Retorno: 7 | Espera: 4
+2025-06-20 10:59:46,090 - INFO - P4 | Llegada: 3 | Rafaga: 6 | Prioridad: 2 | Inicio: 8 | Final: 14 | Retorno: 11 | Espera: 5
+2025-06-20 10:59:46,090 - INFO - P3 | Llegada: 2 | Rafaga: 8 | Prioridad: 4 | Inicio: 14 | Final: 22 | Retorno: 20 | Espera: 12
+2025-06-20 11:01:41,077 - INFO - Aplicación finalizada correctamente

@@ -7,9 +7,20 @@ project_root: str = os.path.dirname(current_file_path)  # Carpeta FCFS
 if project_root not in sys.path:
     sys.path.insert(0, project_root)
 
-# Importar el controlador desde la estructura MVC
+# Importar el controlador y el logger
 from controller.controller import Controller
+from utils.logger import setup_logger
 
 if __name__ == "__main__":
-    app = Controller()
-    app.run()
+    # Configurar el logger
+    logger = setup_logger()
+    logger.info("Iniciando aplicación FCFS")
+    
+    try:
+        app = Controller()
+        logger.info("Controlador iniciado correctamente")
+        app.run()
+        logger.info("Aplicación finalizada correctamente")
+    except Exception as e:
+        logger.error(f"Error en la aplicación: {str(e)}")
+        sys.exit(1)
