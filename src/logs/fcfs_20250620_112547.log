@@ -1,0 +1,17 @@
+2025-06-20 11:25:47,990 - INFO - Iniciando aplicación FCFS
+2025-06-20 11:25:48,451 - INFO - Controlador iniciado correctamente
+2025-06-20 11:26:15,297 - INFO - Procesos FCFS calculados:
+2025-06-20 11:26:15,297 - INFO - P1 | Llegada: 0 | Rafaga: 5 | Inicio: 0 | Final: 5 | Retorno: 5 | Espera: 0
+2025-06-20 11:26:15,297 - INFO - P2 | Llegada: 2 | Rafaga: 3 | Inicio: 5 | Final: 8 | Retorno: 6 | Espera: 3
+2025-06-20 11:26:15,297 - INFO - P3 | Llegada: 4 | Rafaga: 1 | Inicio: 8 | Final: 9 | Retorno: 5 | Espera: 4
+2025-06-20 11:26:15,297 - INFO - P11 | Llegada: 0 | Rafaga: 3 | Inicio: 9 | Final: 12 | Retorno: 12 | Espera: 9
+2025-06-20 11:26:15,297 - INFO - P12 | Llegada: 0 | Rafaga: 3 | Inicio: 12 | Final: 15 | Retorno: 15 | Espera: 12
+2025-06-20 11:26:15,299 - INFO - Procesos Prioridades calculados:
+2025-06-20 11:26:15,299 - INFO - P6 | Llegada: 0 | Rafaga: 1 | Prioridad: 1 | Inicio: 0 | Final: 1 | Retorno: 1 | Espera: 0
+2025-06-20 11:26:15,299 - INFO - P4 | Llegada: 0 | Rafaga: 5 | Prioridad: 2 | Inicio: 1 | Final: 6 | Retorno: 6 | Espera: 1
+2025-06-20 11:26:15,300 - INFO - P10 | Llegada: 0 | Rafaga: 2 | Prioridad: 2 | Inicio: 6 | Final: 8 | Retorno: 8 | Espera: 6
+2025-06-20 11:26:15,300 - INFO - P5 | Llegada: 0 | Rafaga: 3 | Prioridad: 3 | Inicio: 8 | Final: 11 | Retorno: 11 | Espera: 8
+2025-06-20 11:26:15,300 - INFO - P8 | Llegada: 0 | Rafaga: 2 | Prioridad: 3 | Inicio: 11 | Final: 13 | Retorno: 13 | Espera: 11
+2025-06-20 11:26:15,300 - INFO - P9 | Llegada: 0 | Rafaga: 2 | Prioridad: 4 | Inicio: 13 | Final: 15 | Retorno: 15 | Espera: 13
+2025-06-20 11:26:15,300 - INFO - P7 | Llegada: 0 | Rafaga: 2 | Prioridad: 7 | Inicio: 15 | Final: 17 | Retorno: 17 | Espera: 15
+2025-06-20 11:26:41,544 - INFO - Aplicación finalizada correctamente

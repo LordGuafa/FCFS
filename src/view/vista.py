@@ -15,7 +15,9 @@ class ProcesoTableView(tk.Frame):
         on_pause: Optional[Callable[[], None]] = None,
         on_stop: Optional[Callable[[], None]] = None,
         on_speed_change: Optional[Callable[[float], None]] = None,
-        on_reset: Optional[Callable[[], None]] = None  # <--- Nuevo parámetro
+        on_reset: Optional[Callable[[], None]] = None,
+        on_add_fcfs: Optional[Callable[[], None]] = None,           # <-- Nuevo
+        on_add_prioridad: Optional[Callable[[], None]] = None       # <-- Nuevo
     ) -> None:
         super().__init__(master, bg="#1e1e2e")
         self.master: Optional[tk.Misc] = master #type: ignore
@@ -27,6 +29,8 @@ class ProcesoTableView(tk.Frame):
         self.on_stop: Callable[[], None] | None = on_stop
         self.on_speed_change: Callable[[float], None] | None = on_speed_change
         self.on_reset: Callable[[], None] | None = on_reset
+        self.on_add_fcfs: Callable[[], None] | None = on_add_fcfs
+        self.on_add_prioridad: Callable[[], None] | None = on_add_prioridad
         
         # Variables de estado
         self.ejecutando = False
@@ -252,17 +256,29 @@ class ProcesoTableView(tk.Frame):
         )
         table_frame.pack(fill="x", padx=20, pady=(0, 10))
         
-        # Botón para agregar proceso
+        # Botones para agregar procesos
         add_btn_frame = tk.Frame(table_frame, bg="#1e1e2e")
         add_btn_frame.pack(fill="x", padx=10, pady=(10, 5))
         
         ttk.Button(
             add_btn_frame,
+            text="➕ Agregar FCFS",
+            style="Primary.TButton",
+            command=self.on_add_fcfs_clicked # type: ignore
+        ).pack(side="left", padx=(0, 5))
+        ttk.Button(
+            add_btn_frame,
+            text="➕ Agregar Prioridad",
+            style="Primary.TButton",
+            command=self.on_add_prioridad_clicked # type: ignore
+        ).pack(side="left", padx=(0, 5))
+        ttk.Button(
+            add_btn_frame,
             text="➕ Agregar Proceso",
             style="Primary.TButton",
             command=self.on_add_clicked
-        ).pack(side="left")
-        
+        ).pack(side="left", padx=(0, 5))
+
         # Frame para la tabla con scrollbar
         table_container = tk.Frame(table_frame, bg="#1e1e2e")
         table_container.pack(fill="x", padx=10, pady=(0, 10))
@@ -985,3 +1001,15 @@ class ProcesoTableView(tk.Frame):
         self.on_stop = None
         self.on_speed_change = None
         self.on_reset = None
+
+    def on_add_fcfs_clicked(self) -> None:
+        """Callback para el botón de agregar FCFS"""
+        if self.on_add_fcfs:
+            self.on_add_fcfs()
+        self.add_log_entry("➕ Proceso FCFS agregado")
+
+    def on_add_prioridad_clicked(self) -> None:
+        """Callback para el botón de agregar Prioridad"""
+        if self.on_add_prioridad:
+            self.on_add_prioridad()
+        self.add_log_entry("➕ Proceso de Prioridad agregado")

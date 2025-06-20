@@ -7,6 +7,7 @@ import tkinter as tk
 from typing import List, Any
 import threading
 import time
+import random
 from utils.logger import setup_logger  # <--- Importar logger
 
 class Controller:
@@ -18,6 +19,9 @@ class Controller:
             Proceso("P1", 0, 5, "FCFS"),
             Proceso("P2", 2, 3, "FCFS"),
             Proceso("P3", 4, 1, "FCFS"),
+            Proceso("P4", 0, 5, "Prioridades",2),
+            Proceso("P5", 0, 3, "Prioridades",3),
+            Proceso("P6", 0, 1, "Prioridades",1),
         ]
         self.procesos: List[Proceso] = [Proceso(p.nombre, p.tiempo_llegada, p.rafaga, p.algoritmo, p.prioridad) for p in self.default_procesos]
         
@@ -38,7 +42,9 @@ class Controller:
             on_pause=self.pausar_reanudar,
             on_stop=self.detener_ejecucion,
             on_speed_change=self.cambiar_velocidad,
-            on_reset=self.reiniciar_simulacion  # <--- Nuevo callback
+            on_reset=self.reiniciar_simulacion,
+            on_add_fcfs=self.add_proceso_fcfs,              # <-- Nuevo
+            on_add_prioridad=self.add_proceso_prioridad      # <-- Nuevo
         )
         
         self.planificador.add_observer(self.view)
@@ -248,6 +254,31 @@ class Controller:
         self.view.refresh(self.procesos)
         if hasattr(self.view, "reset_simulation"):
             self.view.reset_simulation()
+
+    def add_proceso_fcfs(self) -> None:
+        """Agregar proceso FCFS rápidamente"""
+        with self.lock:
+            nuevo_nombre = f"P{len(self.procesos)+1}"
+            tiempo_llegada = self.tiempo_actual_simulacion if self.ejecutando else 0
+            rafaga = 3  # Valor por defecto para pruebas
+            nuevo = Proceso(nuevo_nombre, tiempo_llegada, rafaga, "FCFS")
+            self.procesos.append(nuevo)
+            if self.ejecutando:
+                self.recalcular_durante_ejecucion()
+            self.view.refresh(self.procesos)
+
+    def add_proceso_prioridad(self) -> None:
+        """Agregar proceso de Prioridad rápidamente"""
+        with self.lock:
+            nuevo_nombre = f"P{len(self.procesos)+1}"
+            tiempo_llegada = self.tiempo_actual_simulacion if self.ejecutando else 0
+            rafaga = 2  # Valor por defecto para pruebas
+            prioridad = random.randint(1, 10)  # Prioridad completamente aleatoria
+            nuevo = Proceso(nuevo_nombre, tiempo_llegada, rafaga, "Prioridades", prioridad)
+            self.procesos.append(nuevo)
+            if self.ejecutando:
+                self.recalcular_durante_ejecucion()
+            self.view.refresh(self.procesos)
 
     def run(self) -> None:
         self.root.mainloop()

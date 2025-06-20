@@ -1,0 +1,2 @@
+2025-06-20 11:18:46,454 - INFO - Iniciando aplicación FCFS
+2025-06-20 11:18:46,921 - ERROR - Error en la aplicación: 'ProcesoTableView' object has no attribute 'on_add_fcfs_clicked'
